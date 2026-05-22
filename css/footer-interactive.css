@@ -1,0 +1,353 @@
+/* ===== Interactive Footer Bottom Bar ===== */
+
+.footer-interactive {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+}
+
+/* Steam particles container */
+.footer-steam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.steam-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(218, 165, 32, 0.6), transparent);
+  border-radius: 50%;
+  animation: steamRise 3s ease-in infinite;
+  opacity: 0;
+}
+
+@keyframes steamRise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { transform: translateY(-80px) scale(2.5); opacity: 0; }
+}
+
+/* Footer content row */
+.footer-interactive-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Live clock section */
+.footer-clock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer-clock .clock-icon {
+  font-size: 18px;
+  animation: clockPulse 2s ease-in-out infinite;
+  color: #DAA520;
+}
+
+@keyframes clockPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.footer-clock .clock-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+  display: block;
+  line-height: 1;
+}
+
+.footer-clock .clock-time {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Center branding */
+.footer-brand-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-brand-line .brand-text {
+  background: linear-gradient(90deg, #DAA520, #fff, #DAA520);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.footer-brand-line .heart-beat {
+  display: inline-block;
+  animation: heartBeat 1.2s ease-in-out infinite;
+  font-size: 18px;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.3); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.2); }
+  60% { transform: scale(1); }
+}
+
+/* Coffee reaction button */
+.coffee-reaction-btn {
+  background: none;
+  border: 2px solid rgba(218, 165, 32, 0.4);
+  color: #DAA520;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.coffee-reaction-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.coffee-reaction-btn:hover {
+  border-color: #DAA520;
+  background: rgba(218, 165, 32, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+}
+
+.coffee-reaction-btn:hover::before {
+  left: 100%;
+}
+
+.coffee-reaction-btn .coffee-emoji {
+  font-size: 18px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.coffee-reaction-btn:hover .coffee-emoji {
+  animation: coffeeSpin 0.6s ease;
+}
+
+@keyframes coffeeSpin {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg) scale(1.2); }
+  100% { transform: rotate(0deg); }
+}
+
+.coffee-reaction-btn .reaction-count {
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Flying coffee emoji burst */
+.flying-coffee {
+  position: fixed;
+  font-size: 24px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: flyUp 1.2s ease-out forwards;
+}
+
+@keyframes flyUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(0.3) rotate(360deg);
+  }
+}
+
+/* Visitor counter */
+.footer-visitors {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+}
+
+.footer-visitors .visitor-dot {
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+}
+
+/* Fun fact ticker */
+.footer-fun-fact {
+  width: 100%;
+  text-align: center;
+  padding-top: 12px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fun-fact-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.fun-fact-text:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.fun-fact-text .fact-icon {
+  font-size: 16px;
+  animation: factBounce 2s ease-in-out infinite;
+}
+
+@keyframes factBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.fun-fact-text .fact-content {
+  transition: opacity 0.4s ease;
+}
+
+/* Quick action mini buttons */
+.footer-quick-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.quick-action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.quick-action-btn:hover {
+  background: rgba(218, 165, 32, 0.2);
+  border-color: #DAA520;
+  color: #DAA520;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(218, 165, 32, 0.25);
+  text-decoration: none;
+}
+
+/* Tooltip */
+.quick-action-btn[data-tooltip] {
+  position: relative;
+}
+
+.quick-action-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.quick-action-btn[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-interactive-content {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .footer-clock {
+    order: 3;
+  }
+  
+  .footer-brand-line {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .coffee-reaction-btn {
+    order: 2;
+  }
+  
+  .footer-quick-actions {
+    order: 4;
+  }
+}
